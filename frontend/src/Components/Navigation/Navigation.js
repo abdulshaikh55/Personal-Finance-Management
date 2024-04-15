@@ -4,7 +4,7 @@ import avatar from '../../img/avatar.jpg'
 import { menuItems } from '../../utils/menuItems';
 import { signout } from '../../utils/Icons';
 
-export default function Navigation() {
+export default function Navigation({active, setActive}) {
     return (
       <>
           <NavStyled>
@@ -17,7 +17,11 @@ export default function Navigation() {
               </div>
               <ul className='menu-items'>
                 {menuItems.map((item) => {
-                    return <li key={item.id}>
+                    return <li 
+                        key={item.id}
+                        onClick={() => setActive(item.id)}
+                        className={active === item.id ? 'active': ''}
+                    >
                         {item.icon}
                         <span>{item.title}</span>
                     </li>
